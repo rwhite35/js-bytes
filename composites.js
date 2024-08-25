@@ -8,7 +8,7 @@
 
 
 // rando prime and composite numbers
-let numberSet = [
+const numberSet = [
     [2,[3,5]],
     [7,6,10],
     11,13,21
