@@ -27,6 +27,6 @@ NOTE: MacOS 14 and Homebrew's Node distro may have conflicts with other system r
 
 3. [outofsorts.js] (https://github.com/rwhite35/js-bytes/blob/master/outofsorts.js)<br />
    Example of Insertion Sort algorithm for reordering a list of number having an unknown length and range. It builds on some of the traversing work in composite.js, but includes logic for handling different situations. Including chucking larger work into small work, sorting and merge data, and handling issues like undefined or empty values.
-   NOTE: its still a work in progress. The mock data looks like `11,1,21,3,4,32,103,7,4,56,2,12,2` and the end data (as of commit ) is `103,32,56,4,3,56,1,4`. Getting there, but still needs some work.
+   Work In Progress! As of commit 779fa654, mock data looks like `11,1,21,3,4,32,103,7,4,56,2,12,2` and end data is `103,32,56,4,3,56,1,4`. Getting there but still needs some work.
 
 Enjoy!
