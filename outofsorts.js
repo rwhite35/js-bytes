@@ -4,6 +4,7 @@
 // 
 // That asside for the moment, this script experiments with a few common
 // algorithms to tease out opportunities for efficiency and accuracy.
+// this iteration is using Insertion Sort both logically and syntatically.
 //
 // see https://en.wikipedia.org/wiki/Sorting_algorithm
 
@@ -31,27 +32,30 @@ function mergerMania(val, tuple, outArr, success = Boolean) {
     if (typeof val === undefined || val.length <= 0) {
         throw new Error(`val argumentis empty or undefined!`);
     }
-    // console.log(`${mergerMania.name} for val ${val}, with outArr ${outArr}, and tuple ${tuple}`);
+    // console.log(`${mergerMania.name} starting val ${val} with outArr ${outArr} and tuple ${tuple}`);
 
     if (val > tuple[0]) { // a new high
-        if (!outArr.includes(val)) outArr.unshift(val);
+        if (!outArr.includes(val)) outArr.unshift(val); // DOES NOT already include val, added it.
         tuple[2] = tuple[1];
         tuple[1] = tuple[0];
         tuple[0] = val;
 
-    } else if (val < tuple[2]) { // a new low
+    } else if (val < tuple[2] || tuple[2] === 'undefined') { // a new low
         let bidx = outArr.indexOf(tuple[2]);
         if (!outArr.includes(val)) outArr[bidx] = val;
         tuple[2] = val;
 
-    } else if(val > tuple[1] && val < tuple[0]) { // top half
-        let midx = outArr.indexOf(tuple[1]);
-        if (!outArr.includes(val)) outArr[midx + 1] = val;
-        tuple[1] = val;
+    } else if(val < tuple[0] && val > tuple[1]) {   // top half
+        let si = outArr.indexOf(tuple[1]); // splice in at middle index
+        if (!outArr.includes(val)) outArr.splice(si,0,val);
+
+        // reset tuple[1] middle value if val should replace current middle value
+        tuple[1] = (tuple[1] < val) ? tuple[1] : val;
 
     } else { // bottom half
         outArr.push(val);
         tuple[2] = val;
+
     }
 
     // console.log(`${mergerMania.name} ending outArr ${outArr}, tuple ${tuple}`);
@@ -84,7 +88,7 @@ function sortList(list = new Array, vector = new Array) {
                 vector.push(lhs);       // at end
 
             } else { // needle in haystack, 
-                // this using a `next to` strategy - is the next number greater than lhs?
+                // this using a `next to` strategy, is the next number greater than lhs?
                 if (vector.length >= 3) {
                     vector = vector.flatMap( (elm) => (lhs > elm && !vector.includes(lhs)) ? [lhs,elm] : elm );
                 }
@@ -106,7 +110,7 @@ function chunkWorkArray(inArr, workArr = new Array) {
     const totElms = inArr.length;
     const divisor = totElms >= 100 ? 4 : 2;
     const multiple = Math.abs(totElms / divisor);
-    console.log(`${chunkWorkArray.name} received array with ${totElms} numbers to chunk!`);
+    // console.log(`${chunkWorkArray.name} received array with ${totElms} numbers to chunk!`);
 
     let delta = divisor;
     while (delta > 0) { // chunk inArr into two or four sub arrays
@@ -119,7 +123,7 @@ function chunkWorkArray(inArr, workArr = new Array) {
     // add divisor for reference, would be same as work array count.
     workArr.push(divisor);
 
-    console.log(`done chunking workArr: ${workArr}`);
+    // console.log(`done chunking workArr: ${workArr}`);
     return workArr;
 }
 
@@ -140,10 +144,10 @@ function mergeWorkArray(workArr, outArr) {
     outArr.join(tuple);
 
     for (let i = 0; i < outterLoop; i++) {
-        console.log(`- loop ${i} workArr evals lhs ${workArr[wid.lhs][i]}, rhs ${workArr[wid.rhs][i]}`);
+        // console.log(`- loop ${i} workArr evals lhs ${workArr[wid.lhs][i]}, rhs ${workArr[wid.rhs][i]}`);
         try {
-            let lhs  = (workArr[wid.lhs][i] !== undefined) ? workArr[wid.lhs][i] : [];
-            let rhs  = (workArr[wid.rhs][i] !== undefined) ? workArr[wid.rhs][i] : [];
+            let lhs  = (workArr[wid.lhs][i] !== undefined) ? workArr[wid.lhs][i] : 1;
+            let rhs  = (workArr[wid.rhs][i] !== undefined) ? workArr[wid.rhs][i] : 1;
             // throws error
             mergerMania(lhs, tuple, outArr);
             mergerMania(rhs, tuple, outArr);
@@ -169,26 +173,23 @@ function mergeWorkArray(workArr, outArr) {
 function goQuicksort(inArr, outArr = new Array) {
     let resetNull = null;
     let inCnt = inArr.length;
-    console.log(`${goQuicksort.name} has array of ${inCnt} length`);
+    console.log(`${goQuicksort.name} has input array ${inCnt} in length`);
 
     if (typeof inArr == 'undefined' || inCnt === 0) return outArr;
 
     // first: call chunkWorkArray(array) with argument inArr
     let workArr = chunkWorkArray(inArr);
     let divisor = workArr.pop();
-    // console.log(`- step 1 done: chunkWorkArray() returned workArr.length ${workArr.length}, used divisor ${divisor}`);
 
     // next: call sortList(list) with each workArr[i] as argument
     for (let i = 0; i < divisor; i++) {
         workArr[i] = sortList(workArr[i]); // reassign at current position
     }
-    console.log(`- step 2 done: sortList() completed, workArr re-ordered: ${workArr}`);
 
     // finally: merged work array into outArr for easy consumption.
-    // call mergeWorkArray(array) passing workArr and outArr as arguments
     mergeWorkArray(workArr, outArr);
-    // console.log(`- step 3 done: mergeWorkArray() updated final outArr values: ${outArr}`);
 
+    console.log(`${goQuicksort.name} updated output array values: ${outArr}`);
     return outArr
 }
 
