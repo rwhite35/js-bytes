@@ -115,15 +115,15 @@ for (let i = 0; i < count; i++) {
 
 // Its a lonely blue nowhere for `Lil Steven`. 
 // In this example `for` loops over 3 litArray[[0]:[], [1]:[], [2]:''] 
-// bracket level elms, and uses `constraint condition` to consoles only 
-// non-Array elements.
+// bracket level elms, and uses `constraint condition` to consoles 
+// only non-Array elements.
 let retort = document.querySelector("#notMyName");
 for (key in litArray) {
     if (!Array.isArray(litArray[key])) {
         let str = `But I'm Lil ${litArray[key]}! :-(`;
         retort.textContent = str;
     }
-} 
+}
 
 // `while` loops evaluate the continue condition before the
 // next iteration. BONUS: `c` would count down (or up) in 
@@ -131,8 +131,9 @@ for (key in litArray) {
 // is available at loop start for additional abuse. 
 let c = count;
 while (c > 0) {
-    console.log(`${c} gurus looping!`);
-    c--;    // 10,9,..1 
+    c--;
+    if (c % 2 == 0) continue;
+    console.log(`${c} gurus looping!`); // 9, 7, 5, 3, 1
 }
 
 // similarly, `do...while` does the same thing, however, 
