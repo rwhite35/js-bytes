@@ -139,3 +139,16 @@ while (c > 0) {
 // similarly, `do...while` does the same thing, however, 
 // the statement is executed BEFORE the condition is checked.
 // in application terms, do...while behaves like a `for` loop.
+
+let charArr = ['A','B','C','D','E','F'];
+let inout = [];
+let half = charArr.length / 2;
+let a = charArr.slice(0,half);
+let b = charArr.slice(half,charArr.length);
+b.reverse();
+for (let i = 0; i < half; i++) {
+    inout.push(a[i]);
+    inout.push(b[i]);
+}
+// prints a vals A,B,C, b vals F,E,D, result A,F,B,E,C,D
+console.log(`a vals ${a}, b vals ${b}, result ${inout}`);
