@@ -26,11 +26,12 @@ NOTE: MacOS 14 and Homebrew's Node distro may have conflicts with other system r
    Traverse through a number set array of unknown size and structure to return only composite (three or more factors) numbers in a new array. The return array can be undefined (default), empty, or has one or more numbers. This method has a time complexity of O^1 or constant time.
 
 3. [outofsorts.js] (https://github.com/rwhite35/js-bytes/blob/master/outofsorts.js)<br />
-   Example of Insertion Sort algorithm for reordering a list of number having an unknown length and range. It builds on some of the traversing work in composite.js, but includes logic for handling different situations. Including chucking larger work into small work, sorting and merge data, and handling issues like undefined or empty values. WARN: works but hasn't been tested for production code. Regardless, example
+   Example of Insertion Sort algorithm for reordering a list of numbers and having an unknown length and range. Builds on some of the traversing work in composite.js, and includes logic for handling different use cases. Chucks larger work into small work, sorts and merges number data. Gracefully handles issues `undefined` or `empty` values.<br />
+   WARN: hasn't been stress tested NOT production ready. Be that as it may:
 
    - input: `11,1,21,3,4,32,103,7,4,56,2,12,2`
    - output: `103,56,32,21,12,11,7,4,3,2,1`
 
-   \*\* Duplicates removed, list in descending order, what more could you want?
+   \*\* Duplicates removed, list in descending order, what more could any 64 bit CPU ever ask for?
 
 Enjoy!
