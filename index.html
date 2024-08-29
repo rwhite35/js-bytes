@@ -3,11 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JavaScript Playground</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Hello Jello Gummy</h1>
     <div id="notMyName"></div>
+    <br/>
+    <div id="coinTossCopy">
+        <h3>Coin Toss Decisions</h3>
+        <p>Have a choice to make? Well today is your lucky day. Temp fate and leave the 
+            choosing up to this super random and really fun coin toss algorithm.</p>
+        <h3>How To Play</h3>
+        <p>Determine which side of the coin will confirm your decision. 
+            Say heads confirms you should sell everything and run off to Maui, 
+            rest assure, your decision is in good hands!</p>
+        <p>Just hit that button and let the algorithm do the rest.</p>
+        <input id="toss" type="button" value="Toss That Coin" onclick="coinToss();" />
+        <div id="tossResult"></div>
+        <br>
+        <div id="coin">
+            <div class="coinhide" id="heads"><img src="img/Haeads.png" /></div>
+            <div class="coinhide" id="tails"><img src="img/Tails.png" /></div>
+            <div class="coinhide" id="flip"><img src="img/coin_anni.gif" /></div>
+        </div>
+    </div>
     <script src="index.js"></script>
+    <script src="leavetochance.js"></script>
 </body>
 </html>

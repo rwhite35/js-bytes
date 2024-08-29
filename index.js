@@ -99,20 +99,12 @@ Object.objsize = function(obj) {
 // console.log("person size: " + Object.objsize(person));
 
 // calling functions from function
-function square(number) {
-    return number * number;
-}
+function square(number) { return number * number; }
 // console.log(square(3)); // 9
 
 
 // // \\ Loop Guru
 //
-// `for` loop evaluate the continue loop condition 
-// (ie. the after expression) at end of iteration 
-for (let i = 0; i < count; i++) {
-    console.log(`${i} gurus iterating!`); // 0,1,..9
-}
-
 // Its a lonely blue nowhere for `Lil Steven`. 
 // In this example `for` loops over 3 litArray[[0]:[], [1]:[], [2]:''] 
 // bracket level elms, and uses `constraint condition` to consoles 
@@ -124,21 +116,6 @@ for (key in litArray) {
         retort.textContent = str;
     }
 }
-
-// `while` loops evaluate the continue condition before the
-// next iteration. BONUS: `c` would count down (or up) in 
-// non-negative whole numbers. The current loop count value
-// is available at loop start for additional abuse. 
-let c = count;
-while (c > 0) {
-    c--;
-    if (c % 2 == 0) continue;
-    console.log(`${c} gurus looping!`); // 9, 7, 5, 3, 1
-}
-
-// similarly, `do...while` does the same thing, however, 
-// the statement is executed BEFORE the condition is checked.
-// in application terms, do...while behaves like a `for` loop.
 
 let charArr = ['A','B','C','D','E','F'];
 let inout = [];
@@ -152,3 +129,25 @@ for (let i = 0; i < half; i++) {
 }
 // prints a vals A,B,C, b vals F,E,D, result A,F,B,E,C,D
 console.log(`a vals ${a}, b vals ${b}, result ${inout}`);
+
+
+// `while` loops evaluate the continue condition before the
+// next iteration. BONUS: `c` would count down (or up) in 
+// non-negative whole numbers. The current loop count value
+// is available at loop start for additional abuse.
+/*
+let c = count;
+while (c > 0) {
+    c--;
+    if (c % 2 == 0) continue;
+    console.log(`${c} gurus looping!`); // 9, 7, 5, 3, 1
+}
+/*
+
+// `for` loop evaluate the continue loop condition 
+// (ie. the after expression) at end of iteration 
+/*
+for (let i = 0; i < count; i++) {
+    console.log(`${i} gurus iterating!`); // 0,1,..9
+}
+*/

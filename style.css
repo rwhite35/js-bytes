@@ -1,0 +1,23 @@
+@media all and (width: 800px) {
+    body {
+        margin: 10px
+    }
+}
+@media all and (max-width: 768px) and (min-width: 486px) {
+    div {
+        border: 1px solid blue;
+    }
+}
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
+img {
+    border: 0px;
+    width: 100px;
+    height: 100px;
+}
+.coinhide { display: none; }
+.heads:focus ~ #heads { display: block; }
+.tails:focus ~ #tails { display: block; }
+.flip:focus ~ #flip { display: block; }
