@@ -34,9 +34,8 @@ NOTE: MacOS 14 and Homebrew's Node distro may have conflicts with other system r
 
    \*\* Duplicates removed, list in descending order, what more could any 64 bit CPU ever ask for?
 
-4. [leavetochance.js] (https://github.com/rwhite35/js-bytes/blob/master/leavetochance.js)
-   Seeking some relief for a determinsitic universe? Try this coin toss on you next big "life choice" decision. Whats interesting about the algorithn is it run 12 trials, each trial representing a coin toss resulting in head or tails. So you're not actually getting one chance at "free will", but rather a distribution of probabilities
-   that may or may not work out in your favor. Its really still just a 50 / 50 change - in the long run.
+4. [leavetochance.js] (https://github.com/rwhite35/js-bytes/blob/master/leavetochance.js)<br />
+   Seeking some relief for a deterministic universe? Try this coin toss on your next big "life choice" decision. Whats interesting about the algorithm is it runs 12 trials, each trial representing a coin toss resulting in heads (even number) or tails (odd number). So you're not actually getting one chance at "free will", but rather a distribution of probabilities that may or may not work out in your favor. It's really still just a 50 / 50 change - in the long run.<br />
 
    - ![Coin Toss Example](https://github.com/rwhite35/js-bytes/blob/master/img/coinToss_example.png)
 
